@@ -1,3 +1,3 @@
-module github.com/Mixnosha/telegram-bot-api/v5
+module github.com/Mixnosha/telegram-bot-api
 
 go 1.16
