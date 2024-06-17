@@ -16,6 +16,12 @@ func (p Params) AddNonEmpty(key, value string) {
 	}
 }
 
+func (p Params) AddThreadId(key string, value string) {
+    if value != "" {
+        p[key] = value
+    }
+}
+
 // AddNonZero adds a value if it is not zero.
 func (p Params) AddNonZero(key string, value int) {
 	if value != 0 {

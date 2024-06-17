@@ -335,7 +335,7 @@ type MessageConfig struct {
 
 func WithThreadSend(threadId string) MessageOption {
 	return func(config *MessageConfig) {
-        config.BaseChat.ThreadId = threadId
+        config.ThreadId = threadId
 	}
 }
 
@@ -348,6 +348,8 @@ func (config MessageConfig) params() (Params, error) {
 	params.AddNonEmpty("text", config.Text)
 	params.AddBool("disable_web_page_preview", config.DisableWebPagePreview)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
+    params.AddThreadId("message_thread_id", config.ThreadId)
+
 	err = params.AddInterface("entities", config.Entities)
 
 	return params, err
