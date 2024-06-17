@@ -348,7 +348,7 @@ func (config MessageConfig) params() (Params, error) {
 	params.AddNonEmpty("text", config.Text)
 	params.AddBool("disable_web_page_preview", config.DisableWebPagePreview)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
-    params.AddThreadId("message_thread_id", config.ThreadId)
+    params.AddThreadId("reply_to_message_id", config.ThreadId)
 
 	err = params.AddInterface("entities", config.Entities)
 
