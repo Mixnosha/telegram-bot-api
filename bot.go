@@ -331,6 +331,8 @@ func (bot *BotAPI) Request(c Chattable) (*APIResponse, error) {
 			params[file.Name] = file.Data.SendData()
 		}
 	}
+    fmt.Println(c.method())
+    fmt.Println(params)
 
 	return bot.MakeRequest(c.method(), params)
 }

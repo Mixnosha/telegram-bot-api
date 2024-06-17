@@ -266,6 +266,7 @@ func (CloseConfig) params() (Params, error) {
 type BaseChat struct {
 	ChatID                   int64 // required
 	ChannelUsername          string
+    ThreadId                  string
 	ProtectContent           bool
 	ReplyToMessageID         int
 	ReplyMarkup              interface{}
@@ -321,6 +322,8 @@ func (edit BaseEdit) params() (Params, error) {
 	return params, err
 }
 
+type MessageOption func(*MessageConfig)
+
 // MessageConfig contains information about a SendMessage request.
 type MessageConfig struct {
 	BaseChat
@@ -328,6 +331,12 @@ type MessageConfig struct {
 	ParseMode             string
 	Entities              []MessageEntity
 	DisableWebPagePreview bool
+}
+
+func WithThreadSend(threadId string) MessageOption {
+	return func(config *MessageConfig) {
+        config.BaseChat.ThreadId = threadId
+	}
 }
 
 func (config MessageConfig) params() (Params, error) {
